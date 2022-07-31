@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>News</title>
+    <style>
+        body {background-color: #F0E7B4; font-family: "Bitstream Charter", sans-serif; font-size: 10px}
+        h1   {color: #5E572E; text-align: center; text-transform: uppercase;}
+        p    {color: #302D1A; font-size: 15px}
+        main {padding: 10px 15% 30px 15%; display: flex}
+        .header {
+            display: flex;
+            align-items: center;
+            padding:20px 0;
+            justify-content: center;
+            background-color: #CABC68
+        }
+
+        .header_link {
+            padding: 0 10px;
+            text-decoration: none;
+            color: #302D1A;
+            text-transform: uppercase;
+            font-size: 20px;
+        }
+        .header_link:hover {
+            color: #F0E7B4;
+        }
+        .article_link {
+            padding: 0 10px;
+            text-decoration: none;
+            color: #9C8B24;
+            font-size: 20px;
+        }
+        .article_link:hover {
+            color: #CABC68;
+        }
+        section {
+            padding: 0 20% 0 10%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            align-content: flex-end;
+            flex-wrap: wrap;
+            text-align: center;
+            margin: 0 0;
+        }
+        ul {
+            list-style-type: none;
+        }
+        .top {
+            display: flex;
+            align-items: center;
+            padding:20px 0;
+            justify-content: center;
+            background-color: #CABC68;
+            text-decoration: none;
+            color: #302D1A;
+            text-transform: uppercase;
+            font-size: 20px;
+        }
+        .top:hover {
+            color: #F0E7B4;
+        }
+    </style>
+</head>
+<body>
+<a name="top"></a>
+<header>
+    <nav class = "header">
+        <a class="header_link" href="/?category=general">Vispārīgi</a>
+        <a class="header_link" href="/?category=business">Bizness</a>
+        <a class="header_link" href="/?category=sports">Sports</a>
+        <a class="header_link" href="/?category=entertainment">Izklaide</a>
+        <a class="header_link" href="/?category=health">Veselība</a>
+        <a class="header_link" href="/?category=science">Zinātne</a>
+        <a class="header_link" href="/?category=technology">Tehnoloģijas</a>
+    </nav>
+</header>
+
+<main>
+
+<section>
+    <ul>
+        {% for article in articles %}
+            <li>
+                <a class="article_link" href="{{ article.url }}" target="_blank">{{ article.title }}</a>
+            </li>
+            <p>{{ article.description }}</p>
+            <img src="{{ article.urlToImage }}" alt="image not found" width="1000px" height=auto>
+            <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/>
+        {% endfor %}
+    </ul>
+</section>
+</main>
+<a class="top" href="#top">back to top</a>
+</body>
+</html>
