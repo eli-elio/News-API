@@ -7,10 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>News</title>
     <style>
-        body {background-color: #F0E7B4; font-family: "Bitstream Charter", sans-serif; font-size: 10px}
-        h1   {color: #5E572E; text-align: center; text-transform: uppercase;}
+        body {
+            background-color: #F0E7B4;
+            font-family: "Bitstream Charter", sans-serif;
+            font-size: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 0;
+        }
         p    {color: #302D1A; font-size: 15px}
-        main {padding: 10px 15% 30px 15%; display: flex}
         .header {
             display: flex;
             align-items: center;
@@ -29,6 +35,15 @@
         .header_link:hover {
             color: #F0E7B4;
         }
+
+        .article-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 2% 0 0;
+            margin: 0;
+            text-align: center;
+        }
         .article_link {
             padding: 0 10px;
             text-decoration: none;
@@ -38,22 +53,20 @@
         .article_link:hover {
             color: #CABC68;
         }
-        section {
-            padding: 0 20% 0 10%;
+        .each-article {
+            background-color: #f6eebd;
+            padding: 10px 20px 20px 20px;
+            width: 800px;
+            height: fit-content;
             display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            align-content: flex-end;
-            flex-wrap: wrap;
-            text-align: center;
-            margin: 0 0;
+            flex-direction: column;
+            gap: 10px;
         }
+
         ul {
             list-style-type: none;
         }
         .top {
-            display: flex;
-            align-items: center;
             padding:20px 0;
             justify-content: center;
             background-color: #CABC68;
@@ -83,14 +96,14 @@
 
 <main>
 
-<section>
+<section class="article-info">
     <ul>
         {% for article in articles %}
-            <li>
+            <li class="each-article">
                 <a class="article_link" href="{{ article.url }}" target="_blank">{{ article.title }}</a>
+                <p>{{ article.description }}</p>
+                <img src="{{ article.urlToImage }}" alt="image not found" width="100%" height=auto>
             </li>
-            <p>{{ article.description }}</p>
-            <img src="{{ article.urlToImage }}" alt="image not found" width="1000px" height=auto>
             <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/>
         {% endfor %}
     </ul>
